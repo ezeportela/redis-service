@@ -26,10 +26,11 @@ beforeAll(() => {
 afterAll(() => redisService.end());
 
 describe('test redis service', () => {
-  test('test connect to redis', async () => {
+  test('test connect to redis', async (done) => {
     redisService.setValue('ping', 'pong');
     const ping = await redisService.getValue('ping');
     expect(ping).toBe('pong');
+    done();
   });
 
   test('error to connect to redis', () => {
@@ -40,13 +41,14 @@ describe('test redis service', () => {
     }
   });
 
-  test('delete all keys', async () => {
+  test('delete all keys', async (done) => {
     await redisService.deleteAllKeys();
     const keys = await redisService.getAllKeys();
     expect(keys.length).toEqual(0);
+    done();
   });
 
-  test('populate redis', async () => {
+  test('populate redis', async (done) => {
     const response = await axios.get('https://jsonplaceholder.typicode.com/posts');
     expect(response.status).toEqual(200);
     
@@ -58,9 +60,10 @@ describe('test redis service', () => {
 
     const keys = await redisService.getAllKeys();
     expect(keys.length).toBeGreaterThanOrEqual(100);
+    done();
   });
 
-  test('get and set json', async () => {
+  test('get and set json', async (done) => {
     const cuit = '20123456786';
     const subscription = {
       'NRO_DNI': '12345678',
@@ -77,5 +80,6 @@ describe('test redis service', () => {
 
     const json = await redisService.getJsonValue(cuit);
     expect(json).toEqual(subscription);
+    done();
   });
 });
