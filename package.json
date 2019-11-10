@@ -1,0 +1,35 @@
+{
+  "name": "redis-service",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "coverage": "jest --coverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ezeportela/redis-service.git"
+  },
+  "keywords": [
+    "redis",
+    "service"
+  ],
+  "author": "Ezequiel Portela <eportelab@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ezeportela/redis-service/issues"
+  },
+  "homepage": "https://github.com/ezeportela/redis-service#readme",
+  "devDependencies": {
+    "@babel/plugin-transform-runtime": "^7.6.2",
+    "@babel/polyfill": "^7.7.0",
+    "@babel/preset-env": "^7.7.1",
+    "babel-jest": "^24.9.0",
+    "dotenv": "^8.2.0",
+    "jest": "^24.9.0"
+  },
+  "dependencies": {
+    "redis": "^2.8.0"
+  }
+}
